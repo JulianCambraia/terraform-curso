@@ -31,7 +31,7 @@ variable "amis" {
   description = "Anis para determinadas regiões"
   type        = map(any)
   default = {
-    "us-east-1" = "ami-06878d265978313ca"
-    "us-east-2" = "ami-0b93ce03dcbcb10f6"
+    "us-east-1" = "ami-0b5eea76982371e91"
+    "us-east-2" = "ami-0fe472d8a85bc7b0e"
   }
 }
