@@ -34,19 +34,31 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  ami                     = data.aws_ami.ubuntu.id
+  instance_type           = var.int_type
+  disable_api_termination = var.disable_api_termination
 
   tags = {
-    Name = "HelloWorld"
+    Name = var.int_names[0]
   }
 }
 
 resource "aws_instance" "web2" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  ami                     = data.aws_ami.ubuntu.id
+  instance_type           = var.int_type_1
+  disable_api_termination = var.disable_api_termination
 
   tags = {
-    Name = "HelloWorld2-use-state-s3"
+    Name = var.int_names[1]
+  }
+}
+
+resource "aws_instance" "web3" {
+  ami                     = var.amis[var.region]
+  instance_type           = var.int_type
+  disable_api_termination = var.disable_api_termination
+
+  tags = {
+    Name = var.int_names[2]
   }
 }
